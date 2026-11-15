@@ -8,7 +8,7 @@ A responsive Jekyll website for hiking and trekking in the Dolomites. Published 
 - `_data/experiences.yml`: walking experiences and descriptions. Review these proposed offerings before accepting bookings.
 - `index.html`: introduction, biography and trip-planning copy.
 - `assets/css/main.css`: responsive layout and styles.
-- `assets/images/mountain.jpg`: illustrative alpine photography from [Unsplash](https://images.unsplash.com/photo-1464822759023-fed622ff2c3b). This is atmospheric imagery, not a photograph documenting a particular Dolomites itinerary.
+- `assets/images/mountain.jpg`: Dolomites photography by [Andrei R. Popescu on Unsplash](https://unsplash.com/photos/majestic-mountains-loom-above-a-dense-forest-HBsmzKuGyuI), used under the Unsplash License.
 
 No analytics, booking backend or visitor data storage is included. Contact uses email once configured. Fonts load from Google Fonts; the layout uses system fallbacks if unavailable.
 
