@@ -1,0 +1,22 @@
+{% assign t = site.data.translations[page.lang] %}
+{% assign details = site.data.contact %}
+<section class="contact-page" aria-labelledby="contact-page-title">
+  <div class="contact-cover"><img src="{{ '/assets/images/mountain.jpg' | relative_url }}" alt="{{ t.contact_cover_alt }}" width="2400" height="1600" fetchpriority="high"></div>
+  <div class="contact-document">
+    <p class="eyebrow">{{ t.contact_page_eyebrow }}</p>
+    <h1 id="contact-page-title">{{ t.contact_page_title }}</h1>
+    <section class="contact-professional" aria-labelledby="contact-name">
+      <h2 id="contact-name">Alain Olivier</h2>
+      <p class="contact-profession">{{ t.contact_profession }}</p>
+      <p>{{ t.contact_register }}</p>
+      <dl class="professional-details"><div><dt>{{ t.contact_register_number }}</dt><dd>{{ details.professional_register_number }}</dd></div><div><dt>{{ t.contact_vat }}</dt><dd>{{ details.vat_number }}</dd></div></dl>
+    </section>
+    <dl class="contact-addresses"><div><dt>{{ t.contact_email_label }}</dt><dd><a href="mailto:{{ site.email | escape }}">{{ site.email | escape }} <span aria-hidden="true">↗</span></a></dd></div><div><dt>{{ t.contact_pec_label }}</dt><dd><a href="mailto:{{ details.pec | escape }}">{{ details.pec | escape }} <span aria-hidden="true">↗</span></a></dd></div></dl>
+    <section class="contact-social" aria-labelledby="contact-social-title"><h2 id="contact-social-title">{{ t.contact_social_heading }}</h2><a class="social-row" href="{{ details.instagram }}"><span class="social-icon" aria-hidden="true">◎</span><span>Instagram<small>{{ details.instagram_handle }} · {{ t.contact_social_instagram }}</small></span><span class="social-arrow" aria-hidden="true">↗</span></a><a class="social-row" href="{{ details.whatsapp }}"><span class="social-icon" aria-hidden="true">◌</span><span>WhatsApp<small>{{ t.contact_whatsapp_note }}</small></span><span class="social-arrow" aria-hidden="true">↗</span></a></section>
+    <a class="button contact-form-jump" href="#contact">{{ t.contact_form_link }} <span aria-hidden="true">↓</span></a>
+  </div>
+</section>
+<section id="contact" class="contact section-wrap">
+  <div class="contact-layout"><div class="contact-intro"><p class="eyebrow light">{{ t.contact_eyebrow }}</p><h2>{{ t.contact_title }}</h2><p>{{ t.contact_copy }}</p><p class="contact-direct">{{ t.form_direct_email }}<br><a href="mailto:{{ site.email | escape }}">{{ site.email | escape }}</a></p></div>{% include enquiry-form.html %}</div>
+  <div class="contact-bottom"><span>ALAIN OLIVIER</span><span>{{ t.contact_location }}</span><a href="#main">{{ t.back_top }}</a></div>
+</section>
