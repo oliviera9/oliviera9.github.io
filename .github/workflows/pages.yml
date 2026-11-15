@@ -20,6 +20,8 @@ jobs:
         with:
           source: ./
           destination: ./_site
+      - name: Check translated pages
+        run: python3 scripts/check_languages.py
       - uses: actions/upload-pages-artifact@v3
   deploy:
     environment:

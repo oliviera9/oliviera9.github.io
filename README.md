@@ -5,12 +5,19 @@ A responsive Jekyll website for hiking and trekking in the Dolomites. Published 
 ## Edit the site
 
 - `_config.yml`: site name, description, canonical URL and public `email`. The email is deliberately blank until a real address is supplied. Adding it enables the contact links.
-- `_data/experiences.yml`: walking experiences and descriptions. Review these proposed offerings before accepting bookings.
-- `index.html`: introduction, biography and trip-planning copy.
+- `_data/experiences.json`: Italian (`it`) and English (`en`) walking experiences and descriptions. Review these proposed offerings before accepting bookings.
+- `_data/translations.json`: all Italian and English page text and SEO metadata.
+- `_includes/home.html`: shared page structure for both languages.
+- `it/index.html` and `en/index.html`: language entry pages.
+- `index.html`: redirects the root to Italian, preserving incoming section links.
 - `assets/css/main.css`: responsive layout and styles.
 - `assets/images/mountain.jpg`: Dolomites photography by [Andrei R. Popescu on Unsplash](https://unsplash.com/photos/majestic-mountains-loom-above-a-dense-forest-HBsmzKuGyuI), used under the Unsplash License.
 
 No analytics, booking backend or visitor data storage is included. Contact uses email once configured. Fonts load from Google Fonts; the layout uses system fallbacks if unavailable.
+
+## Languages
+
+Italian is the default at `/it/`; English is at `/en/`. The visible IT / EN switch preserves the selected section. Both versions use the same layout, images and styles. Edit the matching language entry in the JSON data files to change text. Metadata, image descriptions, navigation, sitemap and alternate-language links are localized. No translation service, extra Jekyll plugin or backend is required.
 
 ## Local development
 
@@ -21,7 +28,7 @@ bundle install
 bundle exec jekyll serve
 ```
 
-Open http://127.0.0.1:4000. To build only, use `bundle exec jekyll build`.
+Open http://127.0.0.1:4000. To build only, use `bundle exec jekyll build`. After building, run `python3 scripts/check_languages.py` to verify both language versions; deployment runs this check automatically.
 
 ## Deployment
 

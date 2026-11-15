@@ -1,0 +1,54 @@
+{
+  "en": [
+    {
+      "number": "01",
+      "title": "Day hikes",
+      "subtitle": "A day to get a little further away.",
+      "description": "From quiet forest paths to wide-open alpine landscapes. A walking day shaped around your interests, experience and pace.",
+      "detail": "Private outings · Flexible pace",
+      "kind": "day"
+    },
+    {
+      "number": "02",
+      "title": "Hut-to-hut trekking",
+      "subtitle": "Stay a little closer to the mountains.",
+      "description": "Follow the trail from valley to valley, with nights in mountain huts and time to enjoy the journey between them.",
+      "detail": "Multi-day journeys · Mountain huts",
+      "kind": "trek"
+    },
+    {
+      "number": "03",
+      "title": "Your own itinerary",
+      "subtitle": "Start with a place. Or simply an idea.",
+      "description": "A personal walking itinerary for individuals, friends or families, built around the landscapes you want to discover.",
+      "detail": "Tailored itineraries · Small groups",
+      "kind": "custom"
+    }
+  ],
+  "it": [
+    {
+      "number": "01",
+      "title": "Escursioni di giornata",
+      "subtitle": "Una giornata per allontanarsi dalla routine.",
+      "description": "Dai sentieri silenziosi nel bosco agli ampi panorami alpini. Una giornata a piedi costruita attorno ai tuoi interessi, alla tua esperienza e al tuo passo.",
+      "detail": "Uscite private · Al tuo passo",
+      "kind": "day"
+    },
+    {
+      "number": "02",
+      "title": "Trekking tra rifugi",
+      "subtitle": "Per sentirsi un po’ più vicini alla montagna.",
+      "description": "Un cammino da una valle all’altra, con notti nei rifugi e il tempo per godersi ogni tappa del viaggio.",
+      "detail": "Più giorni · Rifugi di montagna",
+      "kind": "trek"
+    },
+    {
+      "number": "03",
+      "title": "Il tuo itinerario",
+      "subtitle": "Si parte da un luogo. O anche solo da un’idea.",
+      "description": "Un itinerario a piedi per te, per i tuoi amici o per la tua famiglia, pensato attorno ai paesaggi che desideri scoprire.",
+      "detail": "Itinerari su misura · Piccoli gruppi",
+      "kind": "custom"
+    }
+  ]
+}

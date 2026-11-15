@@ -18,3 +18,16 @@ if (toggle && nav) {
     }
   });
 }
+
+// Keep the current section when moving between translations. Plain links also
+// work without JavaScript; both languages share the same section identifiers.
+const languageLinks = document.querySelectorAll('[data-language-link]');
+function updateLanguageLinks() {
+  languageLinks.forEach(link => {
+    const target = new URL(link.href);
+    target.hash = window.location.hash;
+    link.href = target.href;
+  });
+}
+updateLanguageLinks();
+window.addEventListener('hashchange', updateLanguageLinks);
