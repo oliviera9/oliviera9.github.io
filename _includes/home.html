@@ -12,7 +12,7 @@
 <section class="planning section-wrap"><p class="eyebrow">{{ t.planning_eyebrow }}</p><h2>{{ t.planning_title }}</h2><div class="planning-grid"><div><span>01</span><h3>{{ t.step_one_title }}</h3><p>{{ t.step_one_copy }}</p></div><div><span>02</span><h3>{{ t.step_two_title }}</h3><p>{{ t.step_two_copy }}</p></div><div><span>03</span><h3>{{ t.step_three_title }}</h3><p>{{ t.step_three_copy }}</p></div></div></section>
 <section id="contact" class="contact section-wrap">
   <div class="contact-layout">
-    <div class="contact-intro"><p class="eyebrow light">{{ t.contact_eyebrow }}</p><h2>{{ t.contact_title }}</h2><p>{{ t.contact_copy }}</p><p class="contact-direct">{{ t.form_direct_email }}<br><a href="mailto:{{ site.email | escape }}">{{ site.email | escape }}</a></p></div>
+    <div class="contact-intro"><p class="eyebrow light">{{ t.contact_eyebrow }}</p><h2>{{ t.contact_title }}</h2><p>{{ t.contact_copy }}</p>{% include contact-details.html %}</div>
     {% include enquiry-form.html %}
   </div>
   <div class="contact-bottom"><span>ALAIN OLIVIER</span><span>{{ t.contact_location }}</span><a href="#main">{{ t.back_top }}</a></div>

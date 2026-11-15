@@ -1,8 +1,7 @@
 {% assign language = page.lang | default: site.lang %}{% assign t = site.data.translations[language] %}{% assign home_path = '/' | append: language | append: '/' %}
-{% assign contact_path = site.data.routes.contact[language] %}
+{% assign contact_path = home_path | append: '#contact' %}
 {% assign translated_paths = site.data.routes[page.translation_key] | default: site.data.routes.home %}
 {% assign seo_title = page.title | default: t.seo_title %}{% assign seo_description = page.description | default: t.seo_description %}
-{% if page.translation_key == 'contact' %}{% assign seo_title = t.contact_page_seo_title %}{% assign seo_description = t.contact_page_description %}{% endif %}
 <!doctype html>
 <html lang="{{ language }}">
 <head>
@@ -13,7 +12,7 @@
   {% if page.noindex %}<meta name="robots" content="noindex, follow">{% endif %}
   <meta name="theme-color" content="#173d36">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
-  {% if page.translation_key == 'home' or page.translation_key == 'contact' %}
+  {% if page.translation_key == 'home' %}
   <link rel="alternate" hreflang="it" href="{{ translated_paths.it | absolute_url }}">
   <link rel="alternate" hreflang="en" href="{{ translated_paths.en | absolute_url }}">
   <link rel="alternate" hreflang="x-default" href="{{ translated_paths.it | absolute_url }}">
@@ -34,7 +33,7 @@
     <a class="brand" href="{{ home_path | relative_url }}" aria-label="{{ t.home_label }}"><svg viewBox="0 0 58 36" aria-hidden="true"><path d="M2 32 22 5l12 17 7-10 15 20M15 15l7 5 5-7"/></svg><span>ALAIN OLIVIER<small>INTERNATIONAL MOUNTAIN LEADER</small></span></a>
     <div class="header-actions">
       <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">{{ t.menu }} <span aria-hidden="true">＋</span></button>
-      <nav id="navigation" aria-label="{{ t.nav_label }}"><a href="{{ home_path | relative_url }}#experiences">{{ t.nav_experiences }}</a><a href="{{ home_path | relative_url }}#about">{{ t.nav_about }}</a><a href="{{ contact_path | relative_url }}" class="nav-contact"{% if page.translation_key == 'contact' %} aria-current="page"{% endif %}>{{ t.nav_contact }} <span aria-hidden="true">↗</span></a></nav>
+      <nav id="navigation" aria-label="{{ t.nav_label }}"><a href="{{ home_path | relative_url }}#experiences">{{ t.nav_experiences }}</a><a href="{{ home_path | relative_url }}#about">{{ t.nav_about }}</a><a href="{{ contact_path | relative_url }}" class="nav-contact">{{ t.nav_contact }} <span aria-hidden="true">↗</span></a></nav>
       <div class="language-switch" role="group" aria-label="{{ t.language_label }}">
         <a href="{{ translated_paths.it | relative_url }}" lang="it" hreflang="it" aria-label="Italiano"{% if language == 'it' %} aria-current="page"{% endif %} data-language-link>IT</a><span aria-hidden="true">/</span><a href="{{ translated_paths.en | relative_url }}" lang="en" hreflang="en" aria-label="English"{% if language == 'en' %} aria-current="page"{% endif %} data-language-link>EN</a>
       </div>

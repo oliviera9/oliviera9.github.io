@@ -7,10 +7,10 @@ A responsive Jekyll website for hiking and trekking in the Dolomites. Published 
 - `_config.yml`: site name, description, canonical URL and public `email`. The public email is `oliviera9@gmail.com`. `contact_endpoint` supplies the form delivery address.
 - `_data/experiences.json`: Italian (`it`) and English (`en`) walking experiences and descriptions. Review these proposed offerings before accepting bookings.
 - `_data/contact.json`: professional registration, VAT, PEC, Instagram and WhatsApp details, transcribed from the supplied public Notion contact page.
-- `_data/routes.json`: matching Italian and English URLs for the home and contact pages.
+- `_data/routes.json`: Italian and English homepage URLs.
 - `_data/translations.json`: all Italian and English page text and SEO metadata.
 - `_includes/home.html`: shared homepage structure for both languages.
-- `_includes/contact-page.html`: dedicated contact page layout, professional details and enquiry form.
+- `_includes/contact-details.html`: professional details, email, PEC and social links in the homepage contact section.
 - `it/index.html` and `en/index.html`: language entry pages.
 - `index.html`: redirects the root to Italian, preserving incoming section links.
 - `assets/css/main.css`: responsive layout and styles.
@@ -20,7 +20,7 @@ No analytics or booking backend is included. Enquiries are sent to `oliviera9@gm
 
 ## Enquiry form
 
-The Italian and English home and contact pages contain a native HTML POST form with name, reply email, activity, preferred dates, group size and message. Name, email and message are required. Experience links preselect the corresponding activity. Browser validation works without JavaScript, and submissions stay with the provider until it redirects to the localized confirmation page. The form has a honeypot and retains FormSubmit’s default CAPTCHA protection.
+The Italian and English homepages contain a native HTML POST form with name, reply email, activity, preferred dates, group size and message. Name, email and message are required. Experience links preselect the corresponding activity. Browser validation works without JavaScript, and submissions stay with the provider until it redirects to the localized confirmation page. The form has a honeypot and retains FormSubmit’s default CAPTCHA protection.
 
 **One-time activation:** submit a test enquiry from the published website, then open the activation email sent by FormSubmit to `oliviera9@gmail.com` and confirm the address. Follow the provider’s prompts and resend a test enquiry after activation to verify delivery. The form must be activated before relying on it for enquiries. Automated checks do not send email or prove inbox delivery.
 
@@ -30,7 +30,7 @@ The form explains to visitors that their details pass through FormSubmit for an 
 
 ## Languages
 
-Italian is the default at `/it/`; English is at `/en/`. Dedicated contact pages are at `/it/contatti/` and `/en/contact/`. The visible IT / EN switch preserves the selected section. Both versions use the same layout, images and styles. Edit the matching language entry in the JSON data files to change text. Metadata, image descriptions, navigation, sitemap and alternate-language links are localized. No translation service, extra Jekyll plugin or backend is required.
+Italian is the default at `/it/`; English is at `/en/`. All contact details and the enquiry form are in the homepage’s `#contact` section. The old `/it/contatti/` and `/en/contact/` URLs redirect to the corresponding homepage contact section and are excluded from the sitemap. The visible IT / EN switch preserves the selected section. Both versions use the same layout, images and styles. Edit the matching language entry in the JSON data files to change text. Metadata, image descriptions, navigation, sitemap and alternate-language links are localized. No translation service, extra Jekyll plugin or backend is required.
 
 ## Local development
 

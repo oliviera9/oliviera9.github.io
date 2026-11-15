@@ -1,0 +1,14 @@
+{% assign language = page.lang | default: site.lang %}{% assign t = site.data.translations[language] %}{% assign home_path = site.data.routes.home[language] %}{% assign contact_path = home_path | append: '#contact' %}
+<!doctype html>
+<html lang="{{ language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ t.contact_page_title | escape }} | Alain Olivier</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="{{ home_path | absolute_url }}">
+  <meta http-equiv="refresh" content="0;url={{ contact_path | relative_url }}">
+  <script>window.location.replace({{ home_path | relative_url | jsonify }} + window.location.search + '#contact');</script>
+</head>
+<body><p><a href="{{ contact_path | relative_url }}">{{ t.contact_page_title }}</a></p></body>
+</html>

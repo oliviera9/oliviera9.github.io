@@ -2,9 +2,5 @@
   "home": {
     "it": "/it/",
     "en": "/en/"
-  },
-  "contact": {
-    "it": "/it/contatti/",
-    "en": "/en/contact/"
   }
 }

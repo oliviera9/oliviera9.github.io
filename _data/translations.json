@@ -71,7 +71,6 @@
     "form_message_hint": "Share your interests, walking experience and any questions.",
     "form_privacy": "Your details are sent through FormSubmit to Alain Olivier to respond to your enquiry.",
     "form_submit": "Send enquiry",
-    "form_direct_email": "Prefer email? Write to",
     "form_subject": "New walking enquiry — English website",
     "form_whitespace_error": "Please enter some text.",
     "form_thanks_eyebrow": "YOUR NEXT ADVENTURE",
@@ -80,7 +79,6 @@
     "form_thanks_back": "Back to the website ↗",
     "form_thanks_seo": "Enquiry sent | Alain Olivier",
     "contact_page_title": "Contact",
-    "contact_page_eyebrow": "LET’S GET IN TOUCH",
     "contact_profession": "International Mountain Leader UIMLA · Accompagnatore di Media Montagna",
     "contact_register": "Registered with the Collegio Regionale Veneto delle Guide Alpine",
     "contact_register_number": "Registration number",
@@ -89,11 +87,7 @@
     "contact_pec_label": "Certified email (PEC)",
     "contact_social_heading": "Follow along. Stay in touch.",
     "contact_whatsapp_note": "Join the WhatsApp group",
-    "contact_social_instagram": "Mountain moments and stories",
-    "contact_form_link": "Request information",
-    "contact_page_seo_title": "Contact | Alain Olivier — International Mountain Leader",
-    "contact_page_description": "Contact Alain Olivier, International Mountain Leader UIMLA in the Dolomites. Email, certified email, professional details and enquiry form.",
-    "contact_cover_alt": "The Dolomites above the forests of Rocca Pietore"
+    "contact_social_instagram": "Mountain moments and stories"
   },
   "it": {
     "location": "DOLOMITI, ITALIA",
@@ -167,7 +161,6 @@
     "form_message_hint": "Raccontami i tuoi interessi, la tua esperienza sui sentieri e le tue domande.",
     "form_privacy": "I tuoi dati vengono inviati tramite FormSubmit ad Alain Olivier per rispondere alla tua richiesta.",
     "form_submit": "Invia la richiesta",
-    "form_direct_email": "Preferisci un’email? Scrivi a",
     "form_subject": "Nuova richiesta escursione — sito italiano",
     "form_whitespace_error": "Inserisci del testo.",
     "form_thanks_eyebrow": "LA TUA PROSSIMA AVVENTURA",
@@ -176,7 +169,6 @@
     "form_thanks_back": "Torna al sito ↗",
     "form_thanks_seo": "Richiesta inviata | Alain Olivier",
     "contact_page_title": "Contatti",
-    "contact_page_eyebrow": "RESTIAMO IN CONTATTO",
     "contact_profession": "Accompagnatore di Media Montagna · International Mountain Leader UIMLA",
     "contact_register": "Iscritto presso il Collegio Regionale Veneto delle Guide Alpine",
     "contact_register_number": "Numero di iscrizione",
@@ -185,10 +177,6 @@
     "contact_pec_label": "PEC",
     "contact_social_heading": "Seguimi. Restiamo in contatto.",
     "contact_whatsapp_note": "Entra nel gruppo WhatsApp",
-    "contact_social_instagram": "Immagini e racconti di montagna",
-    "contact_form_link": "Richiedi informazioni",
-    "contact_page_seo_title": "Contatti | Alain Olivier — International Mountain Leader",
-    "contact_page_description": "Contatta Alain Olivier, Accompagnatore di Media Montagna e International Mountain Leader UIMLA nelle Dolomiti. Email, PEC, dati professionali e modulo informazioni.",
-    "contact_cover_alt": "Le Dolomiti sopra i boschi di Rocca Pietore"
+    "contact_social_instagram": "Immagini e racconti di montagna"
   }
 }

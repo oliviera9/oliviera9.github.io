@@ -40,7 +40,7 @@ assert translations['it'].keys() == translations['en'].keys()
 for language in ('it', 'en'):
     home_html = (ROOT / '_site' / language / 'index.html').read_text()
     thanks_html = (ROOT / '_site' / language / 'thanks/index.html').read_text()
-    for page_type in ('home', 'contact'):
+    for page_type in ('home',):
         route = routes[page_type][language]
         html = (ROOT / '_site' / route.lstrip('/') / 'index.html').read_text()
         page = Page()
@@ -81,19 +81,24 @@ for language in ('it', 'en'):
                     target = Page()
                     target.feed(destination.read_text())
                     assert fragment in target.ids, href
-        if page_type == 'home':
-            assert html.count('<article class="experience">') == 3
-        else:
-            for key in ('professional_register_number', 'vat_number', 'pec', 'instagram', 'whatsapp'):
-                assert details[key] in html, key
-            assert 'contact-page-title' in page.ids
-            assert routes['contact'][language] in page.links
-            contact_html = html
+        assert html.count('<article class="experience">') == 3
+        for key in ('professional_register_number', 'vat_number', 'pec', 'instagram', 'whatsapp'):
+            assert details[key] in html, key
+        assert 'contact-name' in page.ids
+        assert routes['home'][language] + '#contact' in page.links
+    legacy_slug = 'contatti' if language == 'it' else 'contact'
+    legacy_html = (ROOT / '_site' / language / legacy_slug / 'index.html').read_text()
+    legacy = Page()
+    legacy.feed(legacy_html)
+    assert legacy.canonical[0].endswith(routes['home'][language])
+    assert any('noindex' in value for value in legacy.robots)
+    assert routes['home'][language] + '#contact' in legacy.links
+    assert 'window.location.replace' in legacy_html
     thanks = Page()
     thanks.feed(thanks_html)
     assert thanks.language == language
     assert any('noindex' in value for value in thanks.robots)
-    combined_html = home_html + contact_html + thanks_html
+    combined_html = home_html + thanks_html
     for key, value in translations[language].items():
         if key.startswith('not_found'):
             continue
@@ -101,7 +106,7 @@ for language in ('it', 'en'):
 
 sitemap = ET.parse(ROOT / '_site/sitemap.xml')
 ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
-assert len(sitemap.findall('s:url', ns)) == 4
+assert len(sitemap.findall('s:url', ns)) == 2
 redirect = (ROOT / '_site/index.html').read_text()
 assert 'window.location.hash' in redirect and 'window.location.replace' in redirect
 print('Italian and English pages, contact details, SEO, links, enquiry forms and sitemap passed.')
