@@ -1,0 +1,18 @@
+- number: "01"
+  title: Day hikes
+  subtitle: A day to get a little further away.
+  description: From quiet forest paths to wide-open alpine landscapes. A walking day shaped around your interests, experience and pace.
+  detail: Private outings · Flexible pace
+  kind: day
+- number: "02"
+  title: Hut-to-hut trekking
+  subtitle: Stay a little closer to the mountains.
+  description: Follow the trail from valley to valley, with nights in mountain huts and time to enjoy the journey between them.
+  detail: Multi-day journeys · Mountain huts
+  kind: trek
+- number: "03"
+  title: Your own itinerary
+  subtitle: Start with a place. Or simply an idea.
+  description: A personal walking itinerary for individuals, friends or families, built around the landscapes you want to discover.
+  detail: Tailored itineraries · Small groups
+  kind: custom
