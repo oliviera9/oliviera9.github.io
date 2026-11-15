@@ -1,0 +1,20 @@
+{% assign thanks_path = '/' | append: page.lang | append: '/thanks/' %}
+<form class="enquiry-form" action="{{ site.contact_endpoint | escape }}" method="post" aria-labelledby="enquiry-title" data-enquiry-form data-whitespace-error="{{ t.form_whitespace_error | escape }}">
+  <h3 id="enquiry-title">{{ t.form_heading }}</h3>
+  <p class="form-required">{{ t.form_required }}</p>
+  <input type="hidden" name="_subject" value="{{ t.form_subject | escape }}">
+  <input type="hidden" name="_next" value="{{ thanks_path | absolute_url }}">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="language" value="{{ page.lang }}">
+  <div class="form-trap" aria-hidden="true"><label for="enquiry-website">Website</label><input id="enquiry-website" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+  <div class="form-grid">
+    <div class="form-field"><label for="enquiry-name">{{ t.form_name }} <span aria-hidden="true">*</span></label><input id="enquiry-name" name="name" type="text" autocomplete="name" maxlength="120" required></div>
+    <div class="form-field"><label for="enquiry-email">{{ t.form_email }} <span aria-hidden="true">*</span></label><input id="enquiry-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+    <div class="form-field form-full"><label for="enquiry-activity">{{ t.form_activity }}</label><select id="enquiry-activity" name="activity"><option value="">{{ t.form_choose }}</option>{% for experience in site.data.experiences[page.lang] %}<option value="{{ experience.kind }}">{{ experience.title }}</option>{% endfor %}<option value="advice">{{ t.form_unsure }}</option></select></div>
+    <div class="form-field"><label for="enquiry-dates">{{ t.form_dates }}</label><input id="enquiry-dates" name="dates" type="text" maxlength="200" aria-describedby="dates-hint"><small id="dates-hint">{{ t.form_dates_hint }}</small></div>
+    <div class="form-field"><label for="enquiry-group">{{ t.form_group }}</label><input id="enquiry-group" name="group_size" type="number" min="1" step="1" inputmode="numeric" aria-describedby="group-hint"><small id="group-hint">{{ t.form_group_hint }}</small></div>
+    <div class="form-field form-full"><label for="enquiry-message">{{ t.form_message }} <span aria-hidden="true">*</span></label><textarea id="enquiry-message" name="message" rows="5" maxlength="5000" required aria-describedby="message-hint"></textarea><small id="message-hint">{{ t.form_message_hint }}</small></div>
+  </div>
+  <p class="form-privacy">{{ t.form_privacy }}</p>
+  <button class="button cream" type="submit">{{ t.form_submit }} <span aria-hidden="true">↗</span></button>
+</form>

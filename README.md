@@ -4,7 +4,7 @@ A responsive Jekyll website for hiking and trekking in the Dolomites. Published 
 
 ## Edit the site
 
-- `_config.yml`: site name, description, canonical URL and public `email`. The email is deliberately blank until a real address is supplied. Adding it enables the contact links.
+- `_config.yml`: site name, description, canonical URL and public `email`. The public email is `oliviera9@gmail.com`. `contact_endpoint` supplies the form delivery address.
 - `_data/experiences.json`: Italian (`it`) and English (`en`) walking experiences and descriptions. Review these proposed offerings before accepting bookings.
 - `_data/translations.json`: all Italian and English page text and SEO metadata.
 - `_includes/home.html`: shared page structure for both languages.
@@ -13,7 +13,17 @@ A responsive Jekyll website for hiking and trekking in the Dolomites. Published 
 - `assets/css/main.css`: responsive layout and styles.
 - `assets/images/mountain.jpg`: Dolomites photography by [Andrei R. Popescu on Unsplash](https://unsplash.com/photos/majestic-mountains-loom-above-a-dense-forest-HBsmzKuGyuI), used under the Unsplash License.
 
-No analytics, booking backend or visitor data storage is included. Contact uses email once configured. Fonts load from Google Fonts; the layout uses system fallbacks if unavailable.
+No analytics or booking backend is included. Enquiries are sent to `oliviera9@gmail.com` through FormSubmit; no visitor data is stored by this Jekyll site. Fonts load from Google Fonts; the layout uses system fallbacks if unavailable.
+
+## Enquiry form
+
+The Italian and English contact sections contain a native HTML POST form with name, reply email, activity, preferred dates, group size and message. Name, email and message are required. Experience links preselect the corresponding activity. Browser validation works without JavaScript, and submissions stay with the provider until it redirects to the localized confirmation page. The form has a honeypot and retains FormSubmit’s default CAPTCHA protection.
+
+**One-time activation:** submit a test enquiry from the published website, then open the activation email sent by FormSubmit to `oliviera9@gmail.com` and confirm the address. Follow the provider’s prompts and resend a test enquiry after activation to verify delivery. The form must be activated before relying on it for enquiries. Automated checks do not send email or prove inbox delivery.
+
+`contact_endpoint` in `_config.yml` controls the provider endpoint. To change the receiving address, update both `email` and `contact_endpoint`, deploy, and activate the new address. When the custom domain is connected, the provider may require a new activation for that origin. Localized confirmation URLs follow `url` and `baseurl` automatically.
+
+The form explains to visitors that their details pass through FormSubmit for an enquiry reply. No newsletter subscription, tracking or automatic reply to the visitor is configured. See [FormSubmit setup](https://formsubmit.co/) for activation and delivery details.
 
 ## Languages
 

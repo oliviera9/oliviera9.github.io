@@ -31,3 +31,20 @@ function updateLanguageLinks() {
 }
 updateLanguageLinks();
 window.addEventListener('hashchange', updateLanguageLinks);
+
+const enquiryForm = document.querySelector('[data-enquiry-form]');
+if (enquiryForm) {
+  const activity = enquiryForm.querySelector('[name="activity"]');
+  document.querySelectorAll('[data-experience]').forEach(link => {
+    link.addEventListener('click', () => { activity.value = link.dataset.experience; });
+  });
+  // Native browser validation also works without JavaScript. Additionally reject
+  // whitespace-only names/messages; normal submissions go directly to the provider.
+  enquiryForm.querySelectorAll('[name="name"], [name="message"]').forEach(field => {
+    const validate = () => field.setCustomValidity(
+      field.value && !field.value.trim() ? enquiryForm.dataset.whitespaceError : ''
+    );
+    field.addEventListener('input', validate);
+    validate();
+  });
+}

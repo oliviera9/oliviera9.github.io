@@ -1,0 +1,9 @@
+---
+layout: default
+lang: en
+permalink: /en/thanks/
+noindex: true
+---
+{% assign t = site.data.translations[page.lang] %}
+{% assign home_path = '/' | append: page.lang | append: '/' %}
+<section class="enquiry-thanks section-wrap"><p class="eyebrow">{{ t.form_thanks_eyebrow }}</p><h1>{{ t.form_thanks_title }}</h1><p>{{ t.form_thanks_copy }}</p><a class="button" href="{{ home_path | relative_url }}">{{ t.form_thanks_back }}</a></section>

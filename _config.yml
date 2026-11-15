@@ -3,7 +3,9 @@ name: Alain Olivier
 description: Guided hiking and trekking in the Dolomites with Alain Olivier, International Mountain Leader.
 url: "https://oliviera9.github.io"
 baseurl: ""
-email: ""
+email: "oliviera9@gmail.com"
+# FormSubmit emails enquiries after the recipient completes one-time activation.
+contact_endpoint: "https://formsubmit.co/oliviera9@gmail.com"
 lang: it
 timezone: Europe/Rome
 markdown: kramdown

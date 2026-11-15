@@ -11,8 +11,17 @@ class Page(HTMLParser):
         super().__init__()
         self.ids, self.links, self.canonical, self.alternates = set(), [], [], {}
         self.language = None
+        self.forms, self.fields, self.labels, self.robots = [], {}, set(), []
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'form':
+            self.forms.append(attrs)
+        if tag in ('input', 'select', 'textarea'):
+            self.fields[attrs.get('name')] = attrs
+        if tag == 'label':
+            self.labels.add(attrs.get('for'))
+        if tag == 'meta' and attrs.get('name') == 'robots':
+            self.robots.append(attrs.get('content', ''))
         if tag == 'html':
             self.language = attrs.get('lang')
         if 'id' in attrs:
@@ -37,12 +46,33 @@ for language in ('it', 'en'):
     assert '{{' not in html and '{%' not in html
     assert html.count('<article class="experience">') == 3
     assert 'aria-current="page"' in html
+    assert len(page.forms) == 1
+    assert page.forms[0]['method'] == 'post'
+    assert page.forms[0]['action'] == 'https://formsubmit.co/oliviera9@gmail.com'
+    for name in ('name', 'email', 'message'):
+        assert 'required' in page.fields[name]
+        assert page.fields[name]['id'] in page.labels
+    assert page.fields['email']['type'] == 'email'
+    assert page.fields['group_size']['min'] == '1'
+    assert page.fields['group_size']['step'] == '1'
+    assert page.fields['_next']['value'].endswith('/' + language + '/thanks/')
+    assert page.fields['language']['value'] == language
+    assert page.fields['_honey']['tabindex'] == '-1'
+    assert '_captcha' not in page.fields
+    for name in ('activity', 'dates', 'group_size'):
+        assert page.fields[name]['id'] in page.labels
+    thanks_html = (ROOT / '_site' / language / 'thanks/index.html').read_text()
+    thanks = Page()
+    thanks.feed(thanks_html)
+    assert thanks.language == language
+    assert any('noindex' in value for value in thanks.robots)
+    assert translations[language]['form_thanks_copy'] in thanks_html
     for href in page.links:
         if '#' in href:
             assert href.split('#')[1] in page.ids, href
     for key, value in translations[language].items():
-        # Contact CTA renders only when the owner supplies a public email.
-        if key.startswith('not_found') or key == 'contact_cta':
+        # Error and confirmation pages are checked separately from the homepage.
+        if key.startswith(('not_found', 'form_thanks')):
             continue
         assert value in html or value.replace('&', '&amp;') in html, (language, key)
 
@@ -51,4 +81,4 @@ ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
 assert len(sitemap.findall('s:url', ns)) == 2
 redirect = (ROOT / '_site/index.html').read_text()
 assert 'window.location.hash' in redirect and 'window.location.replace' in redirect
-print('Italian and English content, language tags, SEO, section links, root redirect and sitemap passed.')
+print('Italian and English content, SEO, links, enquiry forms, confirmation pages and sitemap passed.')

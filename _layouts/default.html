@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | default: t.seo_title | escape }}</title>
+  <title>{% if page.noindex %}{{ t.form_thanks_seo | escape }}{% else %}{{ page.title | default: t.seo_title | escape }}{% endif %}</title>
   <meta name="description" content="{{ page.description | default: t.seo_description | escape }}">
+  {% if page.noindex %}<meta name="robots" content="noindex, follow">{% endif %}
   <meta name="theme-color" content="#173d36">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   {% if page.translation_key == 'home' %}
