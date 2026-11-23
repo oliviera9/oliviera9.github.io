@@ -6,6 +6,8 @@
   <input type="hidden" name="_next" value="{{ thanks_path | absolute_url }}">
   <input type="hidden" name="_template" value="table">
   <input type="hidden" name="language" value="{{ page.lang }}">
+  <div class="calendar-selection" data-calendar-selection hidden><p role="status">{{ t.calendar_selection }}: <strong data-selected-activity></strong></p><button type="button" data-clear-activity>{{ t.calendar_clear }}</button></div>
+  <input type="hidden" name="planned_activity" value="" data-planned-activity>
   <div class="form-trap" aria-hidden="true"><label for="enquiry-website">Website</label><input id="enquiry-website" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
   <div class="form-grid">
     <div class="form-field"><label for="enquiry-name">{{ t.form_name }} <span aria-hidden="true">*</span></label><input id="enquiry-name" name="name" type="text" autocomplete="name" maxlength="120" required></div>

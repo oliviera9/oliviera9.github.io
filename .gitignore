@@ -6,3 +6,6 @@ _site/
 .gems/
 vendor/
 .DS_Store
+
+.calendar-preview/
+__pycache__/

@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import { localDateKey, isUpcoming, enquirySelection } from '../assets/js/calendar.mjs';
+assert.equal(localDateKey(new Date('2026-11-15T23:30:00Z')), '2026-11-16');
+assert.equal(localDateKey(new Date('2026-07-01T22:30:00Z')), '2026-07-02');
+assert.equal(localDateKey(new Date('2026-12-31T23:30:00Z')), '2027-01-01');
+assert.equal(isUpcoming('2026-11-14', '2026-11-15'), false);
+assert.equal(isUpcoming('2026-11-15', '2026-11-15'), true);
+assert.equal(isUpcoming('2026-11-16', '2026-11-15'), true);
+assert.equal(enquirySelection('Hut-to-hut trek', '2026-12-01 – 2026-12-03'), 'Hut-to-hut trek · 2026-12-01 – 2026-12-03');
+console.log('Calendar date boundaries, Rome timezone and enquiry labels passed.');

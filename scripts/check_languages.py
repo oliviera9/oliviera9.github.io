@@ -2,6 +2,7 @@
 import json
 from html.parser import HTMLParser
 from pathlib import Path
+from check_calendar import validate_activities
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +34,7 @@ class Page(HTMLParser):
         if tag == 'link' and attrs.get('rel') == 'alternate':
             self.alternates[attrs['hreflang']] = attrs['href']
 
+validate_activities(json.loads((ROOT / '_data/activities.json').read_text()))
 translations = json.loads((ROOT / '_data/translations.json').read_text())
 routes = json.loads((ROOT / '_data/routes.json').read_text())
 details = json.loads((ROOT / '_data/contact.json').read_text())
@@ -84,6 +86,7 @@ for language in ('it', 'en'):
         assert html.count('<article class="experience">') == 3
         for key in ('professional_register_number', 'vat_number', 'pec', 'instagram', 'whatsapp'):
             assert details[key] in html, key
+        assert 'calendar' in page.ids and 'calendar-title' in page.ids
         assert 'contact-name' in page.ids
         assert routes['home'][language] + '#contact' in page.links
     legacy_slug = 'contatti' if language == 'it' else 'contact'
@@ -100,7 +103,7 @@ for language in ('it', 'en'):
     assert any('noindex' in value for value in thanks.robots)
     combined_html = home_html + thanks_html
     for key, value in translations[language].items():
-        if key.startswith('not_found'):
+        if key.startswith(('not_found', 'calendar_')):
             continue
         assert value in combined_html or value.replace('&', '&amp;') in combined_html, (language, key)
 

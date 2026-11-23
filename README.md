@@ -5,6 +5,7 @@ A responsive Jekyll website for hiking and trekking in the Dolomites. Published 
 ## Edit the site
 
 - `_config.yml`: site name, description, canonical URL and public `email`. The public email is `oliviera9@gmail.com`. `contact_endpoint` supplies the form delivery address.
+- `_data/activities.json`: dated activities with Italian and English descriptions; currently empty until real outings are supplied.
 - `_data/experiences.json`: Italian (`it`) and English (`en`) walking experiences and descriptions. Review these proposed offerings before accepting bookings.
 - `_data/contact.json`: professional registration, VAT, PEC, Instagram and WhatsApp details, transcribed from the supplied public Notion contact page.
 - `_data/routes.json`: Italian and English homepage URLs.
@@ -14,9 +15,66 @@ A responsive Jekyll website for hiking and trekking in the Dolomites. Published 
 - `it/index.html` and `en/index.html`: language entry pages.
 - `index.html`: redirects the root to Italian, preserving incoming section links.
 - `assets/css/main.css`: responsive layout and styles.
+- `assets/images/hero.jpg`: supplied by the user as `IMG_4050.jpeg`, optimized to 2400 × 1350 for the homepage hero and social preview. Original photo unchanged.
 - `assets/images/mountain.jpg`: Dolomites photography by [Andrei R. Popescu on Unsplash](https://unsplash.com/photos/majestic-mountains-loom-above-a-dense-forest-HBsmzKuGyuI), used under the Unsplash License.
 
 No analytics or booking backend is included. Enquiries are sent to `oliviera9@gmail.com` through FormSubmit; no visitor data is stored by this Jekyll site. Fonts load from Google Fonts; the layout uses system fallbacks if unavailable.
+
+## Upcoming activities
+
+The homepage has a calendar list at `/it/#calendar` and `/en/#calendar`, grouped by month. Maintain dates in `_data/activities.json`. Only entries with `published: true` appear. The file currently contains `[]`, so visitors see a translated invitation to arrange a walk; there are no invented scheduled activities.
+
+Use this example as a **draft**, replace its details with a real outing, then set `published` to `true`:
+
+```json
+[
+  {
+    "id": "summer-walk",
+    "published": false,
+    "date": "2027-06-12",
+    "kind": "day",
+    "status": "open",
+    "it": {
+      "title": "Titolo dell’uscita",
+      "description": "Descrizione dell’itinerario.",
+      "location": "Luogo di ritrovo",
+      "difficulty": "Media",
+      "duration": "5 ore"
+    },
+    "en": {
+      "title": "Walk title",
+      "description": "Description of the route.",
+      "location": "Meeting location",
+      "difficulty": "Moderate",
+      "duration": "5 hours"
+    }
+  }
+]
+```
+
+Dates must be quoted `YYYY-MM-DD` strings. Optionally add `end_date` for a multi-day activity; it stays visible through that date. `kind` must be `day`, `trek` or `custom`; `status` is `open` or `full`. Fully booked outings are labelled and allow enquiries about another date. IDs must be unique lowercase words joined by hyphens. Both language objects need all five text fields shown above.
+
+Jekyll sorts and groups future activities when building. The browser also hides expired entries using the Europe/Rome date, including when returning to a tab, so a rebuild is not required just to remove yesterday’s outing. A rebuild is needed to add or edit an activity. Without JavaScript, the list reflects the last build date.
+
+The information button selects the activity and its dates in the existing form, preserving the visitor’s message. The selected activity is included in the email; visitors can clear it. This requests information and does not reserve a place.
+
+For a **local-only demo** with clearly labelled sample outings, including full and multi-day examples:
+
+```sh
+python3 scripts/preview_calendar.py
+python3 -m http.server 4001 --directory .calendar-preview
+```
+
+Open http://127.0.0.1:4001/en/#calendar (or `/it/#calendar`). Demo data is built in a temporary source copy and written to ignored `.calendar-preview/`; the real data file stays unchanged. Standard site builds never include those samples.
+
+Calendar checks:
+
+```sh
+node scripts/check_calendar.mjs
+python3 scripts/check_calendar.py
+```
+
+They verify Rome date boundaries, sorting, month grouping, translations, expiry, unpublished drafts, multi-day dates and enquiry attributes. The normal language check also validates the real activity data before deployment.
 
 ## Enquiry form
 

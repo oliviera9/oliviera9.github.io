@@ -1,0 +1,35 @@
+{% assign today = site.time | date: '%Y-%m-%d' %}
+{% assign ordered_activities = site.data.activities | sort: 'date' %}
+{% assign visible_count = 0 %}{% assign previous_month = '' %}
+<section id="calendar" class="activity-calendar section-wrap" aria-labelledby="calendar-title" data-activity-calendar data-timezone="{{ site.timezone }}">
+  <div class="section-heading"><div><p class="eyebrow">{{ t.calendar_eyebrow }}</p><h2 id="calendar-title">{{ t.calendar_title }}</h2></div><p>{{ t.calendar_intro }}</p></div>
+  {% if site.calendar_demo %}<p class="calendar-demo">{{ t.calendar_demo }}</p>{% endif %}
+  <div class="calendar-months" data-calendar-months>
+  {% for activity in ordered_activities %}
+    {% assign last_day = activity.end_date | default: activity.date %}
+    {% if activity.published == true and last_day >= today %}
+      {% assign copy = activity[page.lang] %}
+      {% assign month_key = activity.date | slice: 0, 7 %}
+      {% assign month_index = activity.date | date: '%m' | plus: 0 | minus: 1 %}
+      {% assign month_name = t.calendar_months[month_index] %}
+      {% assign year = activity.date | date: '%Y' %}
+      {% assign end_month_index = last_day | date: '%m' | plus: 0 | minus: 1 %}
+      {% if month_key != previous_month %}
+        {% if visible_count > 0 %}</div></section>{% endif %}
+        <section class="calendar-month" aria-labelledby="month-{{ month_key }}" data-calendar-month>
+          <h3 id="month-{{ month_key }}">{{ month_name }} <span>{{ year }}</span></h3><div class="calendar-events">
+        {% assign previous_month = month_key %}
+      {% endif %}
+      {% assign visible_count = visible_count | plus: 1 %}
+      <article class="calendar-event" data-calendar-event data-end-date="{{ last_day }}" aria-labelledby="activity-{{ activity.id }}">
+        <div class="event-date"><time datetime="{{ activity.date }}"><span>{{ activity.date | date: '%d' }}</span>{{ month_name | escape }}</time>{% if activity.end_date and activity.end_date != activity.date %}<small>— <time datetime="{{ activity.end_date }}">{{ activity.end_date | date: '%d' }} {{ t.calendar_months[end_month_index] }} {{ activity.end_date | date: '%Y' }}</time></small>{% endif %}</div>
+        <div class="event-details"><p class="event-status{% if activity.status == 'full' %} is-full{% endif %}">{% if activity.status == 'full' %}{{ t.calendar_full }}{% else %}{{ t.calendar_open }}{% endif %}</p><h4 id="activity-{{ activity.id }}">{{ copy.title | escape }}</h4><p>{{ copy.description | escape }}</p><dl class="event-facts"><div><dt>{{ t.calendar_location }}</dt><dd>{{ copy.location | escape }}</dd></div><div><dt>{{ t.calendar_difficulty }}</dt><dd>{{ copy.difficulty | escape }}</dd></div><div><dt>{{ t.calendar_duration }}</dt><dd>{{ copy.duration | escape }}</dd></div></dl></div>
+        <a class="event-enquire" href="#enquiry-title" data-planned-enquiry data-event-id="{{ activity.id | escape }}" data-event-title="{{ copy.title | escape }}" data-event-date="{{ activity.date }}{% if activity.end_date and activity.end_date != activity.date %} – {{ activity.end_date }}{% endif %}" data-event-kind="{{ activity.kind }}">{% if activity.status == 'full' %}{{ t.calendar_full_cta }}{% else %}{{ t.calendar_enquire }}{% endif %}<span aria-hidden="true">↗</span></a>
+      </article>
+    {% endif %}
+  {% endfor %}
+  {% if visible_count > 0 %}</div></section>{% endif %}
+  </div>
+  <div class="calendar-empty" data-calendar-empty{% if visible_count > 0 %} hidden{% endif %}><div class="calendar-empty-icon" aria-hidden="true">↗</div><div><h3>{{ t.calendar_empty_title }}</h3><p>{{ t.calendar_empty_copy }}</p><a class="text-link" href="#contact">{{ t.calendar_private_cta }} <span aria-hidden="true">↗</span></a></div></div>
+  <p class="calendar-note" data-calendar-note{% if visible_count == 0 %} hidden{% endif %}>{{ t.calendar_note }}</p>
+</section>
