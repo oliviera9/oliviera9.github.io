@@ -19,7 +19,7 @@ def validate_activities(items):
         seen.add(identifier)
         assert type(item['published']) is bool
         assert item['status'] in ('open', 'full')
-        assert item['kind'] in ('day', 'trek', 'custom')
+        assert item['kind'] in ('day', 'trek', 'snowshoe', 'custom')
         start = date.fromisoformat(item['date'])
         end = date.fromisoformat(item.get('end_date', item['date']))
         assert start.isoformat() == item['date'], 'Use YYYY-MM-DD dates'

@@ -1,6 +1,6 @@
 # Alain Olivier — International Mountain Leader
 
-A responsive Jekyll website for hiking and trekking in the Dolomites. Published on GitHub Pages at https://oliviera9.github.io. The planned custom domain is `alainolivier.it`, which must be purchased before activation.
+A responsive Jekyll website for hiking, trekking, winter snowshoeing and self-guided itinerary planning in the Dolomites. Published on GitHub Pages at https://oliviera9.github.io. The planned custom domain is `alainolivier.it`, which must be purchased before activation.
 
 ## Edit the site
 
@@ -53,7 +53,7 @@ Use this example as a **draft**, replace its details with a real outing, then se
 ]
 ```
 
-Dates must be quoted `YYYY-MM-DD` strings. Optionally add `end_date` for a multi-day activity; it stays visible through that date. `kind` must be `day`, `trek` or `custom`; `status` is `open` or `full`. Fully booked outings are labelled and allow enquiries about another date. IDs must be unique lowercase words joined by hyphens. Both language objects need all five text fields shown above.
+Dates must be quoted `YYYY-MM-DD` strings. Optionally add `end_date` for a multi-day activity; it stays visible through that date. `kind` must be `day`, `trek`, `snowshoe` or `custom`; `status` is `open` or `full`. Fully booked outings are labelled and allow enquiries about another date. IDs must be unique lowercase words joined by hyphens. Both language objects need all five text fields shown above.
 
 Jekyll sorts and groups future activities when building. The browser also hides expired entries using the Europe/Rome date, including when returning to a tab, so a rebuild is not required just to remove yesterday’s outing. A rebuild is needed to add or edit an activity. Without JavaScript, the list reflects the last build date.
 

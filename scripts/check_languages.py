@@ -83,7 +83,7 @@ for language in ('it', 'en'):
                     target = Page()
                     target.feed(destination.read_text())
                     assert fragment in target.ids, href
-        assert html.count('<article class="experience">') == 3
+        assert html.count('<article class="experience">') == 5
         for key in ('professional_register_number', 'vat_number', 'pec', 'instagram', 'whatsapp'):
             assert details[key] in html, key
         assert 'calendar' in page.ids and 'calendar-title' in page.ids
