@@ -16,7 +16,8 @@ A responsive Jekyll website for hiking and trekking in the Dolomites. Published 
 - `index.html`: redirects the root to Italian, preserving incoming section links.
 - `assets/css/main.css`: responsive layout and styles.
 - `assets/images/hero.jpg`: supplied by the user as `IMG_4050.jpeg`, optimized to 2400 × 1350 for the homepage hero and social preview. Original photo unchanged.
-- `assets/images/mountain.jpg`: Dolomites photography by [Andrei R. Popescu on Unsplash](https://unsplash.com/photos/majestic-mountains-loom-above-a-dense-forest-HBsmzKuGyuI), used under the Unsplash License.
+- `assets/images/about.jpg`: user-supplied portrait from `IMG_0206 (2).jpeg`, optimized for the “Who I am” section. Original photo unchanged.
+- `assets/images/mountain.jpg` (previous image, no longer displayed): Dolomites photography by [Andrei R. Popescu on Unsplash](https://unsplash.com/photos/majestic-mountains-loom-above-a-dense-forest-HBsmzKuGyuI), used under the Unsplash License.
 
 No analytics or booking backend is included. Enquiries are sent to `oliviera9@gmail.com` through FormSubmit; no visitor data is stored by this Jekyll site. Fonts load from Google Fonts; the layout uses system fallbacks if unavailable.
 
