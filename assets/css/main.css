@@ -22,3 +22,14 @@
 
 /* Self-guided planning follows the accompanied experiences. */
 .route-art.self-guided{background:#e6dfd2}.self-guided svg{transform:scaleX(-1) rotate(-8deg)}
+
+/* Professional affiliations sit with the guide's biography. */
+.affiliations{margin-top:38px;padding-top:24px;border-top:1px solid var(--line)}
+.affiliations h3{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;line-height:1.6;color:var(--muted);text-transform:uppercase}
+.affiliation-list{display:flex;flex-wrap:wrap;gap:24px;margin:20px 0 0;padding:0;list-style:none}
+.affiliation-list li{flex:1 1 155px;min-width:0}
+.affiliation-list a{display:flex;flex-direction:column;align-items:flex-start;gap:12px;height:100%;font-size:11px;line-height:1.6}
+.affiliation-list img{width:auto;height:72px;object-fit:contain}
+.affiliation-list small{display:block;max-width:185px;font-size:10px;color:var(--muted);line-height:1.6;margin-top:3px}
+.affiliation-list a:hover span{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:700px){.affiliation-list{gap:20px}.affiliation-list li{flex-basis:130px}.affiliation-list img{height:64px}}
